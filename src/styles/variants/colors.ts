@@ -95,7 +95,7 @@ const white = '#ffffff';
 
 const transparent = 'transparent';
 
-const color = {
+const colors = {
   gray,
   success,
   danger,
@@ -110,4 +110,4 @@ const color = {
   transparent,
 };
 
-export default color;
+export default colors;
