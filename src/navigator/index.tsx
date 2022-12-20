@@ -7,11 +7,15 @@ import AuthStack from './stacks/auth';
 
 const Stack = createNativeStackNavigator();
 
-export default function RootNavigator() {
+interface RootNavigatorProps {
+  onReady: () => void;
+}
+
+export default function RootNavigator({onReady}: RootNavigatorProps) {
   const isAuth = true;
 
   return (
-    <NavigationContainer>
+    <NavigationContainer onReady={onReady}>
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
