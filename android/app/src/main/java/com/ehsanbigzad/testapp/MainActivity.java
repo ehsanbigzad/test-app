@@ -1,4 +1,4 @@
-package com.testapp;
+package com.ehsanbigzad.testapp;
 
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;
