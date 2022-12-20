@@ -1,23 +1,27 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import HomeScreen from 'screens/home';
-import MemoScreen from 'screens/memo';
-import PhotoScreen from 'screens/photo';
-import CalculatorScreen from 'screens/calculator';
+import MainStack from './stacks/main';
+import AuthStack from './stacks/auth';
 
-const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 export default function RootNavigator() {
+  const isAuth = true;
+
   return (
     <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Photo" component={PhotoScreen} />
-        <Tab.Screen name="Memo" component={MemoScreen} />
-        <Tab.Screen name="Calculator" component={CalculatorScreen} />
-      </Tab.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}>
+        {isAuth ? (
+          <Stack.Screen name="Main" component={MainStack} />
+        ) : (
+          <Stack.Screen name="Auth" component={AuthStack} />
+        )}
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
