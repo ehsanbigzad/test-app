@@ -28,6 +28,15 @@ export default function MainStack() {
           fontSize: font.xs,
           fontWeight: '500',
         },
+        headerShadowVisible: false,
+        headerBackgroundContainerStyle: {
+          borderBottomColor: colors.gray.s100,
+          borderBottomWidth: 0.75,
+        },
+        headerTitleAlign: 'center',
+        headerTitleStyle: {
+          fontSize: font.base2,
+        },
         tabBarInactiveTintColor: colors.primary.t40,
         tabBarActiveTintColor: colors.primary.default,
         tabBarStyle: {
