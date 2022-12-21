@@ -25,6 +25,7 @@ export default function HomeScreen() {
         await postHttp('/notify', {
           token,
         });
+        ToastAndroid.show('Please wait a moment.', ToastAndroid.SHORT);
       }
     } catch (error) {
       ToastAndroid.show('Something went wrong, try later.', ToastAndroid.SHORT);
@@ -37,6 +38,7 @@ export default function HomeScreen() {
   const sendNotificationToAll = useCallback(async () => {
     try {
       await getHttp('/notify');
+      ToastAndroid.show('Please wait a moment.', ToastAndroid.SHORT);
     } catch (error) {
       ToastAndroid.show('Something went wrong, try later.', ToastAndroid.SHORT);
     }
