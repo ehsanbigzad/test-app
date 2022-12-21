@@ -1,4 +1,4 @@
-import React, {memo, useRef, useState} from 'react';
+import React, {memo, useState} from 'react';
 import {
   View,
   ViewStyle,
@@ -42,7 +42,6 @@ function TextField({
   onStartWidgetPress,
   ...rest
 }: TextFieldProps) {
-  const inputRef = useRef<TextInput>(null);
   const [isFocused, setIsFocused] = useState<boolean>(false);
 
   return (
@@ -56,17 +55,12 @@ function TextField({
         ]}>
         {startWidget && (
           <Pressable
-            onPress={() =>
-              onStartWidgetPress
-                ? onStartWidgetPress()
-                : inputRef.current?.focus()
-            }
+            onPress={() => onStartWidgetPress && onStartWidgetPress()}
             style={styles.startWidgetWrapper}>
             {startWidget}
           </Pressable>
         )}
         <TextInput
-          ref={inputRef}
           onFocus={e => {
             setIsFocused(true);
             onFocus && onFocus(e);
@@ -84,9 +78,7 @@ function TextField({
         {endWidget && (
           <Pressable
             hitSlop={10}
-            onPress={() =>
-              onEndWidgetPress ? onEndWidgetPress() : inputRef.current?.focus()
-            }
+            onPress={() => onEndWidgetPress && onEndWidgetPress()}
             style={styles.endWidgetWrapper}>
             {endWidget}
           </Pressable>
