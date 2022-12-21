@@ -1,17 +1,20 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {StyleSheet, ScrollView, SafeAreaView} from 'react-native';
+
+import SignupForm from './components/signup-form';
 
 export default function SignupScreen() {
   return (
-    <View style={styles.container}>
-      <Text>Signup</Text>
-    </View>
+    <ScrollView>
+      <SafeAreaView style={styles.container}>
+        <SignupForm />
+      </SafeAreaView>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 25,
   },
 });
