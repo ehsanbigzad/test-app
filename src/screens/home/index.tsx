@@ -1,5 +1,6 @@
 import React, {useCallback} from 'react';
 import {View, StyleSheet, ToastAndroid} from 'react-native';
+import auth from '@react-native-firebase/auth';
 import messaging from '@react-native-firebase/messaging';
 
 import Button from 'ui/button';
@@ -61,6 +62,14 @@ export default function HomeScreen() {
           containerStyle={styles.button}
           onPress={sendNotificationToAll}
           label="Send notification to all"
+        />
+        <Button
+          type="outline"
+          containerStyle={styles.button}
+          onPress={async () => {
+            await auth().signOut();
+          }}
+          label="Logout"
         />
       </View>
     </View>
