@@ -16,8 +16,9 @@ import HomeScreen from 'screens/home';
 import MemoScreen from 'screens/memo';
 import PhotoScreen from 'screens/photo';
 import CalculatorScreen from 'screens/calculator';
+import type {MainStackParamList} from 'types/screens';
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<MainStackParamList>();
 
 export default function MainStack() {
   return (
