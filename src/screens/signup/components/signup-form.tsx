@@ -56,7 +56,7 @@ export default function SignupForm() {
   });
 
   return (
-    <View style={styles.container}>
+    <View>
       <Controller
         name="email"
         control={control}
@@ -110,11 +110,18 @@ export default function SignupForm() {
           );
         }}
       />
-      <Button label="Create my account" onPress={onSubmit} loading={loading} />
+      <Button
+        label="Create my account"
+        containerStyle={styles.button}
+        onPress={onSubmit}
+        loading={loading}
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  button: {
+    marginTop: mScale(15),
+  },
 });

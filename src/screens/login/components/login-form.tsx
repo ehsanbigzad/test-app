@@ -55,7 +55,7 @@ export default function LoginForm() {
   });
 
   return (
-    <View style={styles.container}>
+    <View>
       <Controller
         name="email"
         control={control}
@@ -108,11 +108,18 @@ export default function LoginForm() {
           );
         }}
       />
-      <Button label="Log me in" onPress={onSubmit} loading={loading} />
+      <Button
+        label="Get in to account"
+        onPress={onSubmit}
+        loading={loading}
+        containerStyle={styles.button}
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  button: {
+    marginTop: mScale(15),
+  },
 });
