@@ -61,8 +61,6 @@ export default function PhotoScreen() {
 
       setLoading(false);
     } catch (error) {
-      console.log(error);
-
       ToastAndroid.show('Something went wrong, try later.', ToastAndroid.SHORT);
       setLoading(false);
     }

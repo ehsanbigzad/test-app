@@ -12,7 +12,6 @@ export default function useMessaging() {
     messaging().subscribeToTopic('general');
 
     const unsubscribe = messaging().onMessage(async remoteMessage => {
-      console.log('foreground notification received');
       showNotification(
         remoteMessage.notification?.title,
         remoteMessage.notification?.body,
