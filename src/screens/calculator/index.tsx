@@ -11,8 +11,8 @@ import KeyboardShift from 'components/keyboard-shift';
 import OperatorSelector from 'components/operator-selector';
 
 interface CalculatorFormData {
-  x: number;
-  y: number;
+  x: string;
+  y: string;
   operator: string;
 }
 
@@ -58,7 +58,7 @@ export default function CalculatorScreen() {
           render={({field: {onChange, onBlur, value}}) => (
             <TextField
               label="Value for X"
-              value={value.toString()}
+              value={value}
               returnKeyType="default"
               autoComplete="off"
               autoCapitalize="none"
@@ -81,7 +81,7 @@ export default function CalculatorScreen() {
           render={({field: {onChange, onBlur, value}}) => (
             <TextField
               label="Value for Y"
-              value={value.toString()}
+              value={value}
               returnKeyType="default"
               autoComplete="off"
               autoCapitalize="none"
