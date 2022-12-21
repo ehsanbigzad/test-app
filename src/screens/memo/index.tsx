@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {StyleSheet, ScrollView, ToastAndroid} from 'react-native';
 import {Controller, useForm} from 'react-hook-form';
 import firestore from '@react-native-firebase/firestore';
@@ -19,9 +19,25 @@ export default function MemoScreen() {
 
   const {
     control,
+    setValue,
     handleSubmit,
     formState: {errors},
   } = useForm<MemoFormData>();
+
+  const onMount = useCallback(async () => {
+    const memoCollection = firestore().collection('Memo');
+    const memoObjects = await memoCollection
+      .where('uid', '==', user?.uid)
+      .get();
+
+    if (!memoObjects.empty) {
+      setValue('memo', memoObjects.docs[0].get('note'));
+    }
+  }, [setValue, user?.uid]);
+
+  useEffect(() => {
+    onMount();
+  }, [onMount]);
 
   const onSubmit = handleSubmit(async payload => {
     setLoading(true);
