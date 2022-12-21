@@ -40,12 +40,14 @@ export default function SignupForm() {
           setError('email', {
             message: 'This email already exist.',
           });
+          return;
         }
 
         if (error.code === firebaseError.INVALID_EMAIL) {
           setError('email', {
             message: 'Email is invalid, try another.',
           });
+          return;
         }
 
         ToastAndroid.show(

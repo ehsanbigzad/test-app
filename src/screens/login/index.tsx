@@ -1,26 +1,20 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {
   View,
   Image,
   Pressable,
   StyleSheet,
   ScrollView,
-  StatusBar,
   useWindowDimensions,
 } from 'react-native';
 
 import Text from 'ui/text';
-import {colors} from 'styles';
 import {mScale} from 'styles/mixins';
 import type {ScreenProps} from 'types/screens';
 import LoginForm from './components/login-form';
 
 export default function LoginScreen({navigation}: ScreenProps) {
   const {width} = useWindowDimensions();
-
-  useEffect(() => {
-    StatusBar.setBackgroundColor(colors.primary.s20);
-  }, []);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>

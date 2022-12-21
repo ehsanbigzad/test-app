@@ -1,11 +1,10 @@
-import React, {useEffect, useMemo} from 'react';
+import React, {useMemo} from 'react';
 import {
   View,
   Image,
   Pressable,
   StyleSheet,
   ScrollView,
-  StatusBar,
   useWindowDimensions,
 } from 'react-native';
 import {ArrowLeft} from 'iconsax-react-native';
@@ -18,10 +17,6 @@ import SignupForm from './components/signup-form';
 
 export default function SignupScreen({navigation}: ScreenProps) {
   const {width} = useWindowDimensions();
-
-  useEffect(() => {
-    StatusBar.setBackgroundColor(colors.primary.s20);
-  }, []);
 
   const renderCloseBtn = useMemo(() => {
     return (
