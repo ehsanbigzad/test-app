@@ -1,17 +1,30 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {StyleSheet, ScrollView, SafeAreaView, Pressable} from 'react-native';
 
-export default function LoginScreen() {
+import Text from 'ui/text';
+import type {ScreenProps} from 'types/screens';
+import LoginForm from './components/login-form';
+
+export default function LoginScreen({navigation}: ScreenProps) {
   return (
-    <View style={styles.container}>
-      <Text>Login</Text>
-    </View>
+    <ScrollView>
+      <SafeAreaView style={styles.container}>
+        <LoginForm />
+        <Pressable
+          style={styles.createAccount}
+          onPress={() => navigation.navigate('Signup')}>
+          <Text>Create account</Text>
+        </Pressable>
+      </SafeAreaView>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 25,
+  },
+  createAccount: {
+    marginTop: 50,
   },
 });
