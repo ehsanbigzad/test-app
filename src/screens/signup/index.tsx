@@ -1,10 +1,11 @@
-import React, {useMemo} from 'react';
+import React, {useEffect, useMemo} from 'react';
 import {
   View,
   Image,
   Pressable,
   StyleSheet,
   ScrollView,
+  StatusBar,
   useWindowDimensions,
 } from 'react-native';
 import {ArrowLeft} from 'iconsax-react-native';
@@ -17,6 +18,10 @@ import SignupForm from './components/signup-form';
 
 export default function SignupScreen({navigation}: ScreenProps) {
   const {width} = useWindowDimensions();
+
+  useEffect(() => {
+    StatusBar.setBackgroundColor(colors.primary.s20);
+  }, []);
 
   const renderCloseBtn = useMemo(() => {
     return (
@@ -32,10 +37,10 @@ export default function SignupScreen({navigation}: ScreenProps) {
 
   return (
     <ScrollView>
-      <View style={[styles.patternWrapper, {height: width * 0.75}]}>
+      <View style={[styles.patternWrapper, {height: width * 0.8}]}>
         <Image
-          source={require('@assets/images/pattern1.png')}
-          style={[styles.pattern, {height: width * 0.75, width}]}
+          source={require('@assets/images/pattern3.png')}
+          style={[styles.pattern, {height: width * 0.8, width}]}
         />
         {renderCloseBtn}
       </View>
@@ -67,7 +72,7 @@ const styles = StyleSheet.create({
     width: mScale(40),
     height: mScale(40),
     alignItems: 'center',
-    backgroundColor: colors.primary.default,
+    backgroundColor: colors.primary.t30,
     justifyContent: 'center',
     borderRadius: 1000,
   },
