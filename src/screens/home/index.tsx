@@ -1,35 +1,46 @@
 import React, {useCallback} from 'react';
-import {View, StyleSheet} from 'react-native';
-import notifee from '@notifee/react-native';
+import {View, StyleSheet, ToastAndroid} from 'react-native';
+import messaging from '@react-native-firebase/messaging';
 
 import Button from 'ui/button';
 import {mScale} from 'styles/mixins';
+import {getHttp, postHttp} from 'utils/http';
+import {showNotification} from 'utils/notification';
 
 export default function HomeScreen() {
   /**
    * Show a local notification channel
    */
   const showLocalNotification = useCallback(async () => {
-    const channelId = await notifee.createChannel({
-      id: 'default',
-      name: 'Default Channel',
-    });
-
-    await notifee.displayNotification({
-      title: 'Test Notification',
-      body: 'This is a test local notification',
-      android: {
-        channelId,
-        pressAction: {
-          id: 'default',
-        },
-      },
-    });
+    showNotification('Local notification title', 'Local notification content');
   }, []);
 
-  const sendNotificationToMe = useCallback(() => {}, []);
+  /**
+   * Send notification to me
+   */
+  const sendNotificationToMe = useCallback(async () => {
+    try {
+      const token = await messaging().getToken();
+      if (token) {
+        await postHttp('/notify', {
+          token,
+        });
+      }
+    } catch (error) {
+      ToastAndroid.show('Something went wrong, try later.', ToastAndroid.SHORT);
+    }
+  }, []);
 
-  const sendNotificationToAll = useCallback(() => {}, []);
+  /**
+   * Send notification to all
+   */
+  const sendNotificationToAll = useCallback(async () => {
+    try {
+      await getHttp('/notify');
+    } catch (error) {
+      ToastAndroid.show('Something went wrong, try later.', ToastAndroid.SHORT);
+    }
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -47,7 +58,7 @@ export default function HomeScreen() {
         <Button
           containerStyle={styles.button}
           onPress={sendNotificationToAll}
-          label="Send a notification to all"
+          label="Send notification to all"
         />
       </View>
     </View>

@@ -9,6 +9,7 @@ export default function useMessaging() {
 
   useEffect(() => {
     register();
+    messaging().subscribeToTopic('general');
 
     const unsubscribe = messaging().onMessage(async remoteMessage => {
       console.log('foreground notification received');
