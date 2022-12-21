@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, ToastAndroid} from 'react-native';
+import {StyleSheet, ToastAndroid} from 'react-native';
 import * as MailChecker from 'mailchecker';
 import type {ScreenProps} from 'types/screens';
 import auth from '@react-native-firebase/auth';
@@ -10,6 +10,7 @@ import Button from 'ui/button';
 import {mScale} from 'styles/mixins';
 import TextField from 'ui/text-field';
 import {firebaseError} from 'constants/firebase';
+import KeyboardShift from 'components/keyboard-shift';
 
 interface ForgotPasswordFormData {
   email: string;
@@ -63,7 +64,7 @@ export default function ForgotPasswordForm() {
   });
 
   return (
-    <View>
+    <KeyboardShift>
       <Controller
         name="email"
         control={control}
@@ -92,7 +93,7 @@ export default function ForgotPasswordForm() {
         onPress={onSubmit}
         loading={loading}
       />
-    </View>
+    </KeyboardShift>
   );
 }
 

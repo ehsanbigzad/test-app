@@ -13,6 +13,7 @@ import {mScale} from 'styles/mixins';
 import TextField from 'ui/text-field';
 import type {ScreenProps} from 'types/screens';
 import {firebaseError} from 'constants/firebase';
+import KeyboardShift from 'components/keyboard-shift';
 
 interface LoginFormData {
   email: string;
@@ -62,7 +63,7 @@ export default function LoginForm() {
   });
 
   return (
-    <View>
+    <KeyboardShift>
       <Controller
         name="email"
         control={control}
@@ -128,7 +129,7 @@ export default function LoginForm() {
         loading={loading}
         containerStyle={styles.button}
       />
-    </View>
+    </KeyboardShift>
   );
 }
 

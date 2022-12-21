@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, ToastAndroid} from 'react-native';
+import {StyleSheet, ToastAndroid} from 'react-native';
 import * as MailChecker from 'mailchecker';
 import auth from '@react-native-firebase/auth';
 import {Eye, EyeSlash} from 'iconsax-react-native';
@@ -10,6 +10,7 @@ import Button from 'ui/button';
 import {mScale} from 'styles/mixins';
 import TextField from 'ui/text-field';
 import {firebaseError} from 'constants/firebase';
+import KeyboardShift from 'components/keyboard-shift';
 import {validatePasswordWithMessage} from 'utils/validation';
 
 interface SignupFormData {
@@ -58,7 +59,7 @@ export default function SignupForm() {
   });
 
   return (
-    <View>
+    <KeyboardShift>
       <Controller
         name="email"
         control={control}
@@ -118,7 +119,7 @@ export default function SignupForm() {
         onPress={onSubmit}
         loading={loading}
       />
-    </View>
+    </KeyboardShift>
   );
 }
 
