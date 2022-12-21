@@ -77,6 +77,10 @@ export default function SignupForm() {
             label="Email"
             value={value}
             onBlur={onBlur}
+            returnKeyType="default"
+            autoComplete="email"
+            autoCapitalize="none"
+            keyboardType="email-address"
             onChangeText={onChange}
             error={errors.email?.message}
           />
@@ -99,6 +103,10 @@ export default function SignupForm() {
               value={value}
               onBlur={onBlur}
               onChangeText={onChange}
+              returnKeyType="done"
+              autoCapitalize="none"
+              keyboardType="default"
+              autoComplete="password-new"
               secureTextEntry={passwordHidden}
               error={errors.password?.message}
               onEndWidgetPress={() => setPasswordHidden(prev => !prev)}

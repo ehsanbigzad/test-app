@@ -82,6 +82,10 @@ export default function ForgotPasswordForm() {
             label="Email"
             value={value}
             onBlur={onBlur}
+            returnKeyType="done"
+            autoComplete="email"
+            autoCapitalize="none"
+            keyboardType="email-address"
             onChangeText={onChange}
             error={errors.email?.message}
           />

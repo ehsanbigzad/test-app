@@ -80,6 +80,10 @@ export default function LoginForm() {
           <TextField
             label="Email"
             value={value}
+            returnKeyType="default"
+            autoComplete="email"
+            autoCapitalize="none"
+            keyboardType="email-address"
             onBlur={onBlur}
             onChangeText={onChange}
             error={errors.email?.message}
@@ -101,6 +105,10 @@ export default function LoginForm() {
               label="Password"
               value={value}
               onBlur={onBlur}
+              returnKeyType="done"
+              autoCapitalize="none"
+              keyboardType="default"
+              autoComplete="password"
               onChangeText={onChange}
               secureTextEntry={passwordHidden}
               error={errors.password?.message}
