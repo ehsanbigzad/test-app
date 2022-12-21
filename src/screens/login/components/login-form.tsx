@@ -1,14 +1,17 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, ToastAndroid} from 'react-native';
+import {View, StyleSheet, ToastAndroid, Pressable} from 'react-native';
 import * as MailChecker from 'mailchecker';
 import auth from '@react-native-firebase/auth';
 import {Eye, EyeSlash} from 'iconsax-react-native';
 import {useForm, Controller} from 'react-hook-form';
+import {useNavigation} from '@react-navigation/native';
 
+import Text from 'ui/text';
 import {colors} from 'styles';
 import Button from 'ui/button';
 import {mScale} from 'styles/mixins';
 import TextField from 'ui/text-field';
+import type {ScreenProps} from 'types/screens';
 import {firebaseError} from 'constants/firebase';
 
 interface LoginFormData {
@@ -17,6 +20,8 @@ interface LoginFormData {
 }
 
 export default function LoginForm() {
+  const navigation = useNavigation<ScreenProps['navigation']>();
+
   const [loading, setLoading] = useState<boolean>(false);
   const [passwordHidden, setPasswordHidden] = useState<boolean>(true);
 
@@ -108,6 +113,13 @@ export default function LoginForm() {
           );
         }}
       />
+      <View style={styles.forgotPasswordWrapper}>
+        <Pressable
+          onPress={() => navigation.navigate('ForgotPassword')}
+          hitSlop={10}>
+          <Text>Forgot your password?</Text>
+        </Pressable>
+      </View>
       <Button
         label="Get in to account"
         onPress={onSubmit}
@@ -121,5 +133,8 @@ export default function LoginForm() {
 const styles = StyleSheet.create({
   button: {
     marginTop: mScale(15),
+  },
+  forgotPasswordWrapper: {
+    marginBottom: mScale(5),
   },
 });
