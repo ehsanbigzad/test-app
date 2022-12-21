@@ -25,13 +25,15 @@ export default function MemoScreen() {
   } = useForm<MemoFormData>();
 
   const onMount = useCallback(async () => {
-    const memoCollection = firestore().collection('Memo');
-    const memoObjects = await memoCollection
-      .where('uid', '==', user?.uid)
-      .get();
+    if (user?.uid) {
+      const memoCollection = firestore().collection('Memo');
+      const memoObjects = await memoCollection
+        .where('uid', '==', user?.uid)
+        .get();
 
-    if (!memoObjects.empty) {
-      setValue('memo', memoObjects.docs[0].get('note'));
+      if (!memoObjects.empty) {
+        setValue('memo', memoObjects.docs[0].get('note'));
+      }
     }
   }, [setValue, user?.uid]);
 
