@@ -56,7 +56,7 @@ export default function LoginForm() {
         }
 
         if (error.code === firebaseError.WRONG_PASSWORD) {
-          setError('email', {
+          setError('password', {
             message: 'Password is incorrect.',
           });
           return;
