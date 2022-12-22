@@ -31,7 +31,7 @@ export default function ForgotPasswordScreen({navigation}: ScreenProps) {
   }, []);
 
   return (
-    <ScrollView>
+    <ScrollView contentContainerStyle={styles.container}>
       <View style={[styles.patternWrapper, {height: width * 0.8}]}>
         <Image
           source={require('@assets/images/pattern3.png')}
@@ -50,6 +50,9 @@ export default function ForgotPasswordScreen({navigation}: ScreenProps) {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    paddingBottom: mScale(25),
+  },
   patternWrapper: {
     overflow: 'hidden',
     marginBottom: mScale(30),

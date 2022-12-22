@@ -21,8 +21,8 @@ export default function SignupScreen({navigation}: ScreenProps) {
   const renderCloseBtn = useMemo(() => {
     return (
       <Pressable
-        style={styles.closeBtn}
         hitSlop={20}
+        style={styles.closeBtn}
         onPress={() => navigation.goBack()}>
         <ArrowLeft color={'#fff'} size={20} />
       </Pressable>
@@ -31,7 +31,7 @@ export default function SignupScreen({navigation}: ScreenProps) {
   }, []);
 
   return (
-    <ScrollView>
+    <ScrollView contentContainerStyle={styles.container}>
       <View style={[styles.patternWrapper, {height: width * 0.8}]}>
         <Image
           source={require('@assets/images/pattern3.png')}
@@ -50,6 +50,9 @@ export default function SignupScreen({navigation}: ScreenProps) {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    paddingBottom: mScale(25),
+  },
   patternWrapper: {
     overflow: 'hidden',
     marginBottom: mScale(30),
@@ -66,10 +69,10 @@ const styles = StyleSheet.create({
     start: mScale(20),
     width: mScale(40),
     height: mScale(40),
-    alignItems: 'center',
-    backgroundColor: colors.primary.t30,
-    justifyContent: 'center',
     borderRadius: 1000,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.primary.t30,
   },
   title: {
     marginBottom: mScale(25),

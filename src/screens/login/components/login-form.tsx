@@ -55,6 +55,13 @@ export default function LoginForm() {
           return;
         }
 
+        if (error.code === firebaseError.WRONG_PASSWORD) {
+          setError('email', {
+            message: 'Password is incorrect.',
+          });
+          return;
+        }
+
         ToastAndroid.show(
           'Something went wrong, try later.',
           ToastAndroid.SHORT,

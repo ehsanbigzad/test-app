@@ -54,6 +54,7 @@ export default function MemoScreen() {
       if (memoObjects.empty) {
         await memoCollection.add({uid: user?.uid, note: payload.memo});
         ToastAndroid.show('Note saved successfully.', ToastAndroid.SHORT);
+        setLoading(false);
         return;
       }
 
@@ -64,6 +65,7 @@ export default function MemoScreen() {
       });
 
       ToastAndroid.show('Note updated successfully.', ToastAndroid.SHORT);
+      setLoading(false);
     } catch (_) {
       ToastAndroid.show('Something went wrong, try later.', ToastAndroid.SHORT);
     }
