@@ -1,5 +1,11 @@
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 
+type RootStackParamList = {
+  Main: undefined;
+  Auth: undefined;
+  Test: undefined;
+};
+
 type AuthStackParamList = {
   Login: undefined;
   Signup: undefined;
@@ -11,9 +17,12 @@ type MainStackParamList = {
   Photo: undefined;
   Memo: undefined;
   Calculator: undefined;
+  Test: undefined;
 };
 
-export type ScreenParamList = AuthStackParamList & MainStackParamList;
+export type ScreenParamList = AuthStackParamList &
+  MainStackParamList &
+  RootStackParamList;
 
 /**
  * Screen props

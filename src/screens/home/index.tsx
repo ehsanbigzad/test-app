@@ -6,9 +6,10 @@ import messaging from '@react-native-firebase/messaging';
 import Button from 'ui/button';
 import {mScale} from 'styles/mixins';
 import {getHttp, postHttp} from 'utils/http';
+import type {ScreenProps} from 'types/screens';
 import {showNotification} from 'utils/notification';
 
-export default function HomeScreen() {
+export default function HomeScreen({navigation}: ScreenProps) {
   /**
    * Show a local notification channel
    */
@@ -63,6 +64,7 @@ export default function HomeScreen() {
           onPress={sendNotificationToAll}
           label="Send notification to all"
         />
+
         <Button
           type="outline"
           containerStyle={styles.button}
@@ -70,6 +72,11 @@ export default function HomeScreen() {
             await auth().signOut();
           }}
           label="Logout"
+        />
+        <Button
+          containerStyle={styles.button}
+          onPress={() => navigation.navigate('Test')}
+          label="Go to Test"
         />
       </View>
     </View>
